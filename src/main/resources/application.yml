@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+spring:
+  mvc:
+  datasource:
+    url: jdbc:h2:mem:pricedb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
+    driverClassName: org.h2.Driver
+    username: test
+    password: test
+  jpa:
+    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+  flyway:
+    enabled: true
+    locations: db/migration
+    schemas: fernando
+  h2:
+    console:
+      enabled: true
+logging:
+  level:
+    root: DEBUG
