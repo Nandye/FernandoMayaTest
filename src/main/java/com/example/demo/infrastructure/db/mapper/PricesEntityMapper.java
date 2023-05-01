@@ -1,4 +1,4 @@
-package com.example.demo.infrastructure.mapper;
+package com.example.demo.infrastructure.db.mapper;
 
 import com.example.demo.domain.Prices;
 import com.example.demo.infrastructure.db.entity.PricesEntity;
