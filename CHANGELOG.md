@@ -16,7 +16,9 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
   schedule cards.
 
 ---
-
+## [0.2.0] - 2023-05-01 :: Core
+### Added
+* Added core layer, implementing Domain-Driven Design
 
 ## [0.1.0] - 2023-04-30 :: Model
 ### Added
