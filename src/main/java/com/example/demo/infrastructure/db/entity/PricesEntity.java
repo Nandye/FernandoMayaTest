@@ -5,10 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -19,6 +16,9 @@ import java.time.LocalDateTime;
 @RequiredArgsConstructor
 public class PricesEntity {
     @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
     @Column(name = "brand_id")
     private Long brandId;
     @Column(name = "start_date")

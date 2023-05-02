@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class PricesDTO {
 
+    private Long id;
     private Long brandId;
     private LocalDateTime startDate;
     private LocalDateTime endDate;
