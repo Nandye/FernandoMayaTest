@@ -16,6 +16,11 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
   schedule cards.
 
 ---
+
+## [0.3.1] - 2023-05-01 :: Test
+### Fixed
+* Added two cover test and fixed a problem with incompatibility between MapStruct and lombok
+
 ## [0.2.0] - 2023-05-01 :: Core
 ### Added
 * Added core layer, implementing Domain-Driven Design
