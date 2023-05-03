@@ -27,7 +27,7 @@ public class PricesCriteriaRepository {
         CriteriaQuery<PricesEntity> criteriaQuery = criteria.createQuery(PricesEntity.class);
         Root<PricesEntity> root = criteriaQuery.from(PricesEntity.class);
         List<Predicate> predicates = new ArrayList<>();
-        predicates.add(criteria.greaterThanOrEqualTo(root.get("startDate"), demandDate));
+        predicates.add(criteria.lessThanOrEqualTo(root.get("startDate"), demandDate));
         predicates.add(criteria.greaterThanOrEqualTo(root.get("endDate"), demandDate));
         predicates.add(criteria.equal(root.get("brandId"), brandId));
         predicates.add(criteria.equal(root.get("productId"), productId));
