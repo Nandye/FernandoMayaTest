@@ -13,10 +13,18 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
 ### Fixed
 - [PROJECTNAME-TTTT](http://tickets.projectname.com/browse/PROJECTNAME-TTTT)
   PATCH Add logic to runsheet teaser delete to delete corresponding
-  schedule cards.
+  schedule cards.ter
 
 ---
-## [0.2.1] - 2023-05-02 :: Core
+## [0.3.1] - 2023-05-03 :: feature/CoverTest https://github.com/Nandye/FernandoMayaTest/tree/feature/CoverTest
+### Add
+* Add a cover test and ControllerAdvice exception handler
+
+## [0.3.0] - 2023-05-02 :: feature/CoverTest https://github.com/Nandye/FernandoMayaTest/tree/feature/CoverTest
+### Fixed
+* Fix DB definition, add a new primary key and fix a predicate on jpa criteria.
+
+## [0.2.1] - 2023-05-02 :: fix/FixDataBase https://github.com/Nandye/FernandoMayaTest/pull/7
 ### Fixed
 * Fix DB definition, add a new primary key and fix a predicate on jpa criteria.
 
