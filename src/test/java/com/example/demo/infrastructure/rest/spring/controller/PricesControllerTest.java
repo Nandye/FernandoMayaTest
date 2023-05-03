@@ -9,10 +9,12 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.springframework.http.ResponseEntity;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.any;
@@ -35,13 +37,13 @@ class PricesControllerTest {
                                 .startDate(LocalDateTime.now()).endDate(LocalDateTime.now())
                                 .brandId(1L).curr("EUR").build()));
 
-        List<PricesDTO> pricesgetPricesOnDemandDate = pricesController
+        ResponseEntity<List<PricesDTO>> pricesOnDemandDate = pricesController
                 .getPricesgetPricesOnDemandDate(PricesFilterDTO.builder()
                         .demandDate(LocalDateTime.now())
                         .productId(1L)
                         .brandId(1L)
                         .build());
-        assertEquals(1, pricesgetPricesOnDemandDate.size());
+        assertEquals(1, Objects.requireNonNull(pricesOnDemandDate.getBody()).size());
     }
 
 }

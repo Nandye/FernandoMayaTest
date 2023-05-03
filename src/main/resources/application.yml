@@ -3,7 +3,6 @@ server:
   servlet:
     context-path: /
 spring:
-  mvc:
   datasource:
     url: jdbc:h2:mem:pricedb;DB_CLOSE_DELAY=-1;DATABASE_TO_UPPER=false
     driverClassName: org.h2.Driver
