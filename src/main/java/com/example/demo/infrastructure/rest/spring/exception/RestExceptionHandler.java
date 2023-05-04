@@ -38,6 +38,14 @@ public class RestExceptionHandler extends ResponseEntityExceptionHandler {
         return handleExceptionInternal(ex, responseBody, headers, HttpStatus.BAD_REQUEST, request);
     }
 
+    // API- 404
+    @ExceptionHandler({NotFoundException.class})
+    public ResponseEntity<Object> handleNotFoundCustom(final RuntimeException ex, final WebRequest request) {
+        logger.error("404 Not Found", ex);
+        final String bodyOfResponse = "No data found";
+        return handleExceptionInternal(ex, bodyOfResponse, new HttpHeaders(), HttpStatus.NOT_FOUND, request);
+    }
+
     // API - 500
 
     @ExceptionHandler({NullPointerException.class, IllegalArgumentException.class, IllegalStateException.class})

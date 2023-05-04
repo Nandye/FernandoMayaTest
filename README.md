@@ -10,4 +10,4 @@ mvnw.cmd clean install   ---> following command for Windows
 
 You can try for beginning with this request:
 
-localhost:8080/fernando/pricesOnDemandDate?demandDate=2020-06-15T10:00:00&brandId=1&productId=35455
+localhost:8080/fernando/priceOnDemandDate?demandDate=2020-06-15T10:00:00&brandId=1&productId=35455

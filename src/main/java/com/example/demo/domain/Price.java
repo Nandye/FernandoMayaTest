@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Prices {
+public class Price {
     private Long id;
     private Long brandId;
     private LocalDateTime startDate;

@@ -1,7 +1,8 @@
 package com.example.demo.application.service;
 
 import com.example.demo.application.repository.PricesRepository;
-import com.example.demo.domain.Prices;
+import com.example.demo.domain.Price;
+import com.example.demo.infrastructure.rest.spring.exception.NotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -10,14 +11,13 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.mockito.Mockito.any;
 import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
-class PricesServiceTest {
+class PriceServiceTest {
 
     @InjectMocks
     private PricesService pricesService;
@@ -25,10 +25,10 @@ class PricesServiceTest {
     private PricesRepository pricesRepository;
 
     @Test
-    void should_retrieve_prices_correctly() {
+    void should_retrieve_prices_correctly() throws NotFoundException {
         when(pricesRepository.getPricesOnDemandDate(any(), any(), any()))
                 .thenReturn(Collections.singletonList(
-                        Prices.builder()
+                        Price.builder()
                                 .price(234.43D)
                                 .priceList(1)
                                 .productId(2343L)
@@ -36,7 +36,7 @@ class PricesServiceTest {
                                 .startDate(LocalDateTime.now())
                                 .endDate(LocalDateTime.now()).id(1L)
                                 .build()));
-        List<Prices> pricesOnDemandDate = pricesService.getPricesOnDemandDate(LocalDateTime.now(), 1L, 1L);
-        assertEquals(1, pricesOnDemandDate.size());
+        Price price = pricesService.getPricesOnDemandDate(LocalDateTime.now(), 1L, 1L);
+        assertNotNull(price);
     }
 }

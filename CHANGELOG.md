@@ -16,6 +16,14 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/).
   schedule cards.ter
 
 ---
+## [0.4.0] - 2023-05-04
+### Add
+* Added the logic that I forget implement, the service should only return one price looking 
+* for the priority column on DB.
+* In the future, if the DB grow up on number of rows and can exist the possibility that two price coexist 
+* with the same priority its will needed to add integration test and the logic for control this casuistic 
+* maybe looking for the greater price or something like that.
+
 ## [0.3.1] - 2023-05-03 :: feature/CoverTest https://github.com/Nandye/FernandoMayaTest/tree/feature/CoverTest
 ### Add
 * Add a cover test and ControllerAdvice exception handler

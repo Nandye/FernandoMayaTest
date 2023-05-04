@@ -1,7 +1,7 @@
 package com.example.demo.infrastructure.db.repository;
 
-import com.example.demo.domain.Prices;
-import com.example.demo.infrastructure.db.entity.PricesEntity;
+import com.example.demo.domain.Price;
+import com.example.demo.infrastructure.db.entity.PriceEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -29,7 +29,7 @@ class PriceRepositoryImplTest {
     void should_retrieve_data_correctly() {
         when(pricesCriteriaRepository.getPricesOfDemandDate(any(), any(), any()))
                 .thenReturn(Collections.singletonList(
-                        PricesEntity.builder()
+                        PriceEntity.builder()
                                 .price(234.43D)
                                 .priceList(1)
                                 .productId(2343L)
@@ -37,7 +37,7 @@ class PriceRepositoryImplTest {
                                 .startDate(LocalDateTime.now())
                                 .endDate(LocalDateTime.now()).id(1L)
                                 .build()));
-        List<Prices> pricesOnDemandDate = priceRepositoryImp.getPricesOnDemandDate(LocalDateTime.now(), 1L, 1L);
-        assertEquals(1, pricesOnDemandDate.size());
+        List<Price> priceOnDemandDate = priceRepositoryImp.getPricesOnDemandDate(LocalDateTime.now(), 1L, 1L);
+        assertEquals(1, priceOnDemandDate.size());
     }
 }
