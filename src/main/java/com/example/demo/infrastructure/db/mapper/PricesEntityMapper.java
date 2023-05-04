@@ -1,7 +1,7 @@
 package com.example.demo.infrastructure.db.mapper;
 
-import com.example.demo.domain.Prices;
-import com.example.demo.infrastructure.db.entity.PricesEntity;
+import com.example.demo.domain.Price;
+import com.example.demo.infrastructure.db.entity.PriceEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
@@ -10,6 +10,6 @@ public interface PricesEntityMapper {
 
     PricesEntityMapper INSTANCE = Mappers.getMapper(PricesEntityMapper.class);
 
-    Prices pricesEntityToPrices(PricesEntity pricesEntity);
+    Price pricesEntityToPrices(PriceEntity priceEntity);
 
 }

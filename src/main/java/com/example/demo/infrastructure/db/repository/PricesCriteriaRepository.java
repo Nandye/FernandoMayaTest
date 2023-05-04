@@ -1,6 +1,6 @@
 package com.example.demo.infrastructure.db.repository;
 
-import com.example.demo.infrastructure.db.entity.PricesEntity;
+import com.example.demo.infrastructure.db.entity.PriceEntity;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -21,11 +21,11 @@ public class PricesCriteriaRepository {
     private EntityManager entityManager;
 
     @Transactional
-    public List<PricesEntity> getPricesOfDemandDate(LocalDateTime demandDate, Long productId, Long brandId) {
+    public List<PriceEntity> getPricesOfDemandDate(LocalDateTime demandDate, Long productId, Long brandId) {
 
         CriteriaBuilder criteria = entityManager.getCriteriaBuilder();
-        CriteriaQuery<PricesEntity> criteriaQuery = criteria.createQuery(PricesEntity.class);
-        Root<PricesEntity> root = criteriaQuery.from(PricesEntity.class);
+        CriteriaQuery<PriceEntity> criteriaQuery = criteria.createQuery(PriceEntity.class);
+        Root<PriceEntity> root = criteriaQuery.from(PriceEntity.class);
         List<Predicate> predicates = new ArrayList<>();
         predicates.add(criteria.lessThanOrEqualTo(root.get("startDate"), demandDate));
         predicates.add(criteria.greaterThanOrEqualTo(root.get("endDate"), demandDate));

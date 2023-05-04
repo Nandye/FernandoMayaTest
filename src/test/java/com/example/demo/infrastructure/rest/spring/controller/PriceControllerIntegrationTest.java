@@ -19,7 +19,6 @@ import org.springframework.web.context.WebApplicationContext;
 
 import javax.servlet.ServletContext;
 
-import static org.hamcrest.Matchers.hasSize;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -29,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @TestPropertySource("classpath:application.properties")
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(classes = {DbJpaConfig.class, FernandoApplication.class})
-public class PricesControllerIntegrationTest {
+public class PriceControllerIntegrationTest {
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -57,10 +56,8 @@ public class PricesControllerIntegrationTest {
                         .param("demandDate", "2020-06-15T00:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(3))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].price").value(30.50D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(3))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(30.50D))
                 .andExpect(status().isOk());
     }
 
@@ -72,25 +69,21 @@ public class PricesControllerIntegrationTest {
                         .param("demandDate", "2020-06-14T10:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(35.50D))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void when_request_day_fourteen_at_four_in_evening_thenResponseTwoElements() throws Exception {
+    public void when_request_day_fourteen_at_four_in_evening_thenResponse_max_priority() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/fernando/pricesOnDemandDate")
                         .param("brandId", "1")
                         .param("productId", "35455")
                         .param("demandDate", "2020-06-14T16:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(2))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].price").value(25.45D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(2))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(25.45D))
                 .andExpect(status().isOk());
     }
 
@@ -102,41 +95,34 @@ public class PricesControllerIntegrationTest {
                         .param("demandDate", "2020-06-14T21:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(1)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(1))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(35.50D))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void when_request_day_fifteen_at_ten_in_morning_thenResponseTwoElement() throws Exception {
+    public void when_request_day_fifteen_at_ten_in_morning_thenResponse_max_priority() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/fernando/pricesOnDemandDate")
                         .param("brandId", "1")
                         .param("productId", "35455")
                         .param("demandDate", "2020-06-15T10:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(3))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].price").value(30.50D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(3))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(30.50D))
                 .andExpect(status().isOk());
     }
 
     @Test
-    public void when_request_day_sixteen_at_nine_in_evening_thenResponseTwoElement() throws Exception {
+    public void when_request_day_sixteen_at_nine_in_evening_thenResponse_max_priority() throws Exception {
         this.mockMvc.perform(MockMvcRequestBuilders.get("/fernando/pricesOnDemandDate")
                         .param("brandId", "1")
                         .param("productId", "35455")
                         .param("demandDate", "2020-06-16T21:00:00")
                 )
                 .andDo(print())
-                .andExpect(MockMvcResultMatchers.jsonPath("$", hasSize(2)))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].id").value(1))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[0].price").value(35.50D))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].id").value(4))
-                .andExpect(MockMvcResultMatchers.jsonPath("$[1].price").value(38.95D))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.id").value(4))
+                .andExpect(MockMvcResultMatchers.jsonPath("$.price").value(38.95D))
                 .andExpect(status().isOk());
     }
 
@@ -149,5 +135,16 @@ public class PricesControllerIntegrationTest {
                 )
                 .andDo(print())
                 .andExpect(status().isBadRequest());
+    }
+
+    @Test
+    public void when_no_data_found() throws Exception {
+        this.mockMvc.perform(MockMvcRequestBuilders.get("/fernando/pricesOnDemandDate")
+                        .param("brandId", "aa")
+                        .param("productId", "35455")
+                        .param("demandDate", "2020-06-12T21:00:00")
+                )
+                .andDo(print())
+                .andExpect(status().is4xxClientError());
     }
 }

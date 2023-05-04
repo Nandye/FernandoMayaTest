@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Table(name = "prices", schema = "fernando")
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class PricesEntity {
+public class PriceEntity {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
